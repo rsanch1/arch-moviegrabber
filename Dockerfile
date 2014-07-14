@@ -60,18 +60,13 @@ RUN chown -R nobody:users /opt/moviegrabber
 # set permissions
 RUN chmod -R 775 /opt/moviegrabber
 
-# add conf file
-###############
-
-ADD moviegrabber.conf /etc/supervisor/conf.d/moviegrabber.conf
-
 # cleanup
 #########
 # remove temporary files
 RUN rm -rf /tmp/*
 
-# run supervisor
-################
-
-# run supervisor
-CMD ["supervisord", "-c", "/etc/supervisor.conf", "-n"]
+# add moviegrabber to runit
+###############
+RUN mkdir /etc/service/moviegrabber
+ADD moviegrabber.sh /etc/service/moviegrabber/run
+RUN chmod +x /etc/service/moviegrabber/run
