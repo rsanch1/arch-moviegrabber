@@ -13,9 +13,9 @@ RUN usermod -u 99 nobody && \
     usermod -d /config nobody
 
 ADD sources.list /etc/apt/
-RUN apt-get install p7zip-full
 RUN apt-get update
 RUN apt-get -y upgrade
+RUN apt-get install p7zip-full
 
 # install application
 #####################
