@@ -27,14 +27,14 @@ RUN mkdir -p /opt/moviegrabber
 ADD https://github.com/binhex/moviegrabber/archive/master.zip /opt/moviegrabber/moviegrabber-master.zip
 
 # unzip to folder
-RUN 7z x /opt/moviegrabber/moviegrabber-master.zip
+RUN 7z e /opt/moviegrabber/moviegrabber-master.zip /opt/moviegrabber/
 
 # move unzipped contents back to moviegrabber root
-RUN mv /opt/moviegrabber/moviegrabber-master/ /opt/moviegrabber/
+#RUN mv /opt/moviegrabber/moviegrabber-master/ /opt/moviegrabber/
 
 # remove files and folders
 RUN rm /opt/moviegrabber/moviegrabber-master.zip
-RUN rm -rf /opt/moviegrabber/moviegrabber-master/
+#RUN rm -rf /opt/moviegrabber/moviegrabber-master/
 
 # docker settings
 #################
