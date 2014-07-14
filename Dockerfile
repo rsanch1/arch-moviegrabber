@@ -27,7 +27,7 @@ RUN mkdir -p /opt/moviegrabber
 ADD https://github.com/binhex/moviegrabber/archive/master.zip /opt/moviegrabber/moviegrabber-master.zip
 
 # unzip to folder
-RUN 7z x /opt/moviegrabber/moviegrabber-master.zip /opt/moviegrabber
+RUN 7z x /opt/moviegrabber/moviegrabber-master.zip -o /opt/moviegrabber
 
 # move unzipped contents back to moviegrabber root
 RUN mv /opt/moviegrabber/moviegrabber-master/* /opt/moviegrabber/
