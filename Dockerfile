@@ -1,17 +1,26 @@
-FROM binhex/arch-base
+FROM phusion/baseimage:0.9.11
 MAINTAINER binhex
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN locale-gen en_US en_US.UTF-8
+
+# Use baseimage-docker's init system
+CMD ["/sbin/my_init"]
+
+# Correct user and group uid/guid
+RUN usermod -u 99 nobody && \
+    usermod -g 100 nobody && \
+    usermod -d /config nobody
+
+ADD sources.list /etc/apt/
+RUN apt-get update
+RUN apt-get -y upgrade
 
 # install application
 #####################
 
-# update package databases for arch
-RUN pacman -Sy --noconfirm
-
-# run pacman to install pre-req
-RUN pacman -S python2 sqlite wget python2-pyopenssl unzip --noconfirm
-
 # make destination folder
-RUN mkdir /opt/moviegrabber
+RUN mkdir -p /opt/moviegrabber
 
 # download zip from github - url zip name is different to destination
 ADD https://github.com/binhex/moviegrabber/archive/master.zip /opt/moviegrabber/moviegrabber-master.zip
@@ -30,13 +39,13 @@ RUN rm -rf /opt/moviegrabber/moviegrabber-master/
 #################
 
 # map /config to host defined config path (used to store configuration from app)
-VOLUME /config
+VOLUME ['/config']
 
 # map /data to host defined data path (used to store data from app)
-VOLUME /data
+VOLUME ['/data']
 
 # map /media to host defined media path (used to read/write to media library)
-VOLUME /media
+VOLUME ['/media']
 
 # expose port for http
 EXPOSE 9191
@@ -57,10 +66,6 @@ ADD moviegrabber.conf /etc/supervisor/conf.d/moviegrabber.conf
 
 # cleanup
 #########
-
-# completely empty pacman cache folder
-RUN pacman -Scc --noconfirm
-
 # remove temporary files
 RUN rm -rf /tmp/*
 
