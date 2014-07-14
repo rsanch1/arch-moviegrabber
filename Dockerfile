@@ -15,7 +15,7 @@ RUN usermod -u 99 nobody && \
 ADD sources.list /etc/apt/
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get install p7zip-full
+RUN apt-get install unzip
 
 # install application
 #####################
@@ -27,7 +27,7 @@ RUN mkdir -p /opt/moviegrabber
 ADD https://github.com/binhex/moviegrabber/archive/master.zip /opt/moviegrabber/moviegrabber-master.zip
 
 # unzip to folder
-RUN 7z e /opt/moviegrabber/moviegrabber-master.zip -o/opt/moviegrabber/
+RUN unzip /opt/moviegrabber/moviegrabber-master.zip -d /opt/moviegrabber/
 
 # move unzipped contents back to moviegrabber root
 #RUN mv /opt/moviegrabber/moviegrabber-master/ /opt/moviegrabber/
