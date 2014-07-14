@@ -69,4 +69,4 @@ RUN rm -rf /tmp/*
 ###############
 RUN mkdir /etc/service/moviegrabber
 ADD moviegrabber.sh /etc/service/moviegrabber/run
-RUN chmod +x /etc/service/moviegrabber/run
+RUN chmod a+x /etc/service/moviegrabber/run
