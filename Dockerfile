@@ -30,7 +30,7 @@ ADD https://github.com/binhex/moviegrabber/archive/master.zip /opt/moviegrabber/
 RUN 7z x /opt/moviegrabber/moviegrabber-master.zip
 
 # move unzipped contents back to moviegrabber root
-RUN mv /opt/moviegrabber/moviegrabber-master/* /opt/moviegrabber/
+RUN mv /*/moviegrabber-master/* /opt/moviegrabber/
 
 # remove files and folders
 RUN rm /opt/moviegrabber/moviegrabber-master.zip
