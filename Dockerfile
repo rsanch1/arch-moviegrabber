@@ -38,7 +38,7 @@ RUN mv /opt/moviegrabber/moviegrabber-master/* /opt/moviegrabber/
 
 # remove files and folders
 RUN rm /opt/moviegrabber/moviegrabber-master.zip
-#RUN rm -rf /opt/moviegrabber/moviegrabber-master/
+RUN rm -rf /opt/moviegrabber/moviegrabber-master/
 
 # docker settings
 #################
