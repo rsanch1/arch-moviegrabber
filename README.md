@@ -9,7 +9,7 @@ This is a Dockerfile for MovieGrabber - http://forums.sabnzbd.org/viewtopic.php?
 **Run container**
 
 ```
-docker run -d -p 9191:9191 --name=<container name> -v <path for media files>:/media -v <path for data files>:/data -v <path for config files>:/config -v /etc/localtime:/etc/localtime:ro eroz/moviegrabber
+docker run -d -p 9191:9191 --name=<container name> -v <path to movies>:/movies -v <path for downloads>:/downloads -v <path for config files>:/config -v /etc/localtime:/etc/localtime:ro eroz/moviegrabber
 ```
 
 Please replace all user variables in the above command defined by <> with the correct values.
