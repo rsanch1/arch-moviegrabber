@@ -4,6 +4,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN locale-gen en_US en_US.UTF-8
 
+ENV HOME /root
+
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
 
@@ -16,6 +18,8 @@ ADD sources.list /etc/apt/
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install unzip
+
+RUN apt-get install -qy wget python
 
 # install application
 #####################
