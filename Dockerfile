@@ -57,14 +57,6 @@ EXPOSE 9191
 # change owner
 RUN chown -R nobody:users /opt/moviegrabber
 
-# set permissions
-RUN chmod -R 775 /opt/moviegrabber
-
-# cleanup
-#########
-# remove temporary files
-RUN rm -rf /tmp/*
-
 # add moviegrabber to runit
 ###############
 RUN mkdir /etc/service/moviegrabber
